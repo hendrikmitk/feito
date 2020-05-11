@@ -24,5 +24,6 @@ function addTodo(event) {
 		// input has no value
 		console.log("no input given");
 		alert("Please enter a todo");
+		document.getElementById("todo-input").focus(); // re-focus text input
 	}
 }
