@@ -1,13 +1,29 @@
-// const todoInput = document.getElementById(".todo-input");
+// select items
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
-
-todoButton.addEventListener("click", addTodo);
-
 let todoCount = 0;
+// const checkButton = document.querySelectorAll(".check-button");
+// const deleteButton = document.querySelectorAll(".delete-button");
+// let checkButton = document.getElementsByClassName(".check-button");
+// let deleteButton = document.getElementsByClassName(".delete-button");
+
+// event listener
+todoButton.addEventListener("click", addTodo);
+// checkButton.addEventListener("click", checkTodo);
+// deleteButton.addEventListener("click", deleteTodo);
 
 // create todo html string with template literals
-const fetchedTodoString = (text) => `<li id="todo-list-item">${text}</li>`;
+const fetchedTodoString = (text) => `<div class="todo-list-item">
+<li class="todo-list-item-name">${text}</li>
+<div class="todo-list-buttons">
+<button class="check-button" type="button">
+<i class="fas fa-check-circle"></i>
+</button>
+<button class="delete-button" type="button">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>`;
 
 // get input, run fetchedTodoString funtion and append todo using throwaway <div>
 function addTodo(event) {
@@ -27,3 +43,13 @@ function addTodo(event) {
 		document.getElementById("todo-input").focus(); // re-focus text input
 	}
 }
+
+// function checkTodo(event) {
+// 	event.preventDefault(); // prevent page reload
+// 	console.log("todo is ticked off");
+// }
+
+// function deleteTodo(event) {
+// 	event.preventDefault(); // prevent page reload
+// 	console.log("todo deleted");
+// }

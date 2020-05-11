@@ -23,17 +23,20 @@
 	margin-top: 14vh;
 	padding: 2rem;
 	width: 768px;
-	height: 60%;
-	overflow: hidden;
+	height: 72%;
+	overflow: scroll;
 }
 
 #header {
-	width: 100%;
 	@include flexCenterCenter;
 	#headline {
 		font-size: 76pt;
 		@include gradientClip(right, $coralish, $coralish2);
 	}
+}
+
+#form {
+	@include flexCenterCenter;
 }
 
 #form-input {
@@ -81,17 +84,42 @@
 	flex-direction: column;
 }
 
-#todo-list-item {
+.todo-list-item {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	background: $blackish2;
 	color: $coralish;
 	border-bottom: 1px dashed $coralish;
 	// border-top-left-radius: 0.4rem;
 	// border-top-right-radius: 0.5rem;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	outline: none;
-	padding: 0.1rem 0.8rem;
 	list-style: none;
-	// margin-bottom: 1rem;
+	.todo-list-item-name {
+		margin-left: 0.7rem;
+	}
+	.todo-list-buttons {
+		margin-right: 0.7rem;
+	}
+	.check-button,
+	.delete-button {
+		font-size: 1.2rem;
+		border: none;
+		background: none;
+		color: $coralish;
+		cursor: pointer;
+		outline: none;
+		margin: 0.4rem 0.4rem;
+	}
+	.check-button {
+		&:hover {
+			color: green;
+		}
+	}
+	.delete-button {
+		&:hover {
+			color: red;
+		}
+	}
 }
