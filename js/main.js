@@ -13,16 +13,9 @@ const fetchedTodoString = (text) => `<li id="todo-list-item">${text}</li>`;
 function addTodo(event) {
 	event.preventDefault(); // prevent page reload
 	const fetchedTodo = document.getElementById("todo-input").value;
-	if (fetchedTodo) {
-		// input has value
-		console.log("new todo", fetchedTodo, "added,", ++todoCount, "todos total"); // log number of todos
-		const div = document.createElement("div");
-		div.innerHTML = fetchedTodoString(fetchedTodo);
-		todoList.append(div.firstChild);
-		document.getElementById("todo-input").value = ""; // clear text input
-	} else {
-		// input has no value
-		console.log("no input given");
-		alert("Please enter a todo");
-	}
+	console.log("new todo", fetchedTodo, "added,", ++todoCount, "todos total"); // log number of todos
+	const div = document.createElement("div");
+	div.innerHTML = fetchedTodoString(fetchedTodo);
+	todoList.append(div.firstChild);
+	document.getElementById("todo-input").value = ""; // clear text input
 }
