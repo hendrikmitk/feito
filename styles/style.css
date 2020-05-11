@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#content {
+  background-color: #388b91db;
+  font-family: "Mukta", sans-serif;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#container {
+  background-color: #3a8185f7;
+  border-radius: 0.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 14vh;
+  padding: 2rem;
+  width: 768px;
+  height: 60%;
+  overflow: hidden;
+}
+
+#header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#header #headline {
+  font-size: 76pt;
+  background: -webkit-gradient(linear, left top, right top, from(#fa7342), to(#fe865b));
+  background: linear-gradient(to right, #fa7342, #fe865b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#form-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+#form-input:hover {
+  scale: 1.03125;
+}
+
+#todo-input,
+#todo-button {
+  background: #292929;
+  color: #fa7342;
+  border: none;
+  font-size: 1.6rem;
+  outline: none;
+  padding: 0.6rem 0.8rem;
+}
+
+#todo-input {
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+#todo-input::-webkit-input-placeholder {
+  opacity: 0.6;
+}
+
+#todo-input:-ms-input-placeholder {
+  opacity: 0.6;
+}
+
+#todo-input::-ms-input-placeholder {
+  opacity: 0.6;
+}
+
+#todo-input::placeholder {
+  opacity: 0.6;
+}
+
+#todo-button {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#todo-button:hover {
+  background: #fa7342;
+  color: #292929;
+}
+
+#todo-list-container {
+  padding-top: 2rem;
+}
+
+#todo-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#todo-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(41, 41, 41, 0.406);
+  color: #fa7342;
+  border-bottom: 1px dashed #fa7342;
+  font-size: 1.6rem;
+  outline: none;
+  padding: 0.1rem 0.8rem;
+  list-style: none;
+}
+/*# sourceMappingURL=style.css.map */

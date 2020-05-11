@@ -1,0 +1,13 @@
+@import "./colors";
+
+@mixin gradientClip($dir, $fromClr, $toClr) {
+	background: linear-gradient(to $dir, $fromClr, $toClr);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin flexCenterCenter {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
