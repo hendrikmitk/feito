@@ -42,9 +42,10 @@
 #form-input {
 	display: flex;
 	transition: all 0.4s ease-in-out;
-	&:hover {
-		scale: 1.03125;
-	}
+	margin-bottom: 2rem;
+	// &:hover {
+	// 	scale: 1.03125;
+	// }
 }
 
 #todo-input,
@@ -75,10 +76,6 @@
 	}
 }
 
-#todo-list-container {
-	padding-top: 2rem;
-}
-
 #todo-list {
 	display: flex;
 	flex-direction: column;
@@ -96,9 +93,6 @@
 			margin-left: 0.7rem;
 			flex: 1;
 		}
-		.todo-list-buttons {
-			margin-right: 0.7rem;
-		}
 		.check-button,
 		.delete-button {
 			font-size: 1.2rem;
@@ -107,7 +101,7 @@
 			color: $coralish;
 			cursor: pointer;
 			outline: none;
-			margin: 0.4rem 0.4rem;
+			margin: 0.6rem 0.4rem;
 		}
 		.check-button {
 			&:hover {
@@ -124,14 +118,14 @@
 	.fas fa-trash {
 		pointer-events: none;
 	}
-	.first-todo {
-		border-top-left-radius: 0.5rem;
-		border-top-right-radius: 0.5rem;
-	}
-	.last-todo {
-		border-bottom-left-radius: 0.5rem;
-		border-bottom-right-radius: 0.5rem;
-	}
+	// .first-todo {
+	// 	border-top-left-radius: 0.5rem;
+	// 	border-top-right-radius: 0.5rem;
+	// }
+	// .last-todo {
+	// 	border-bottom-left-radius: 0.5rem;
+	// 	border-bottom-right-radius: 0.5rem;
+	// }
 	.todo-completed {
 		text-decoration: line-through;
 		opacity: 0.4;

@@ -75,10 +75,7 @@
   display: flex;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
-}
-
-#form-input:hover {
-  scale: 1.03125;
+  margin-bottom: 2rem;
 }
 
 #todo-input,
@@ -123,10 +120,6 @@
   color: #292929;
 }
 
-#todo-list-container {
-  padding-top: 2rem;
-}
-
 #todo-list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -161,10 +154,6 @@
           flex: 1;
 }
 
-#todo-list .todo-list-item .todo-list-buttons {
-  margin-right: 0.7rem;
-}
-
 #todo-list .todo-list-item .check-button,
 #todo-list .todo-list-item .delete-button {
   font-size: 1.2rem;
@@ -173,7 +162,7 @@
   color: #fa7342;
   cursor: pointer;
   outline: none;
-  margin: 0.4rem 0.4rem;
+  margin: 0.6rem 0.4rem;
 }
 
 #todo-list .todo-list-item .check-button:hover {
@@ -187,16 +176,6 @@
 #todo-list .fas fa-check-circle,
 #todo-list .fas fa-trash {
   pointer-events: none;
-}
-
-#todo-list .first-todo {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-
-#todo-list .last-todo {
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 
 #todo-list .todo-completed {
