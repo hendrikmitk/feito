@@ -82,43 +82,67 @@
 #todo-list {
 	display: flex;
 	flex-direction: column;
-}
-
-.todo-list-item {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background: $blackish2;
-	color: $coralish;
-	border-bottom: 1px dashed $coralish;
-	// border-top-left-radius: 0.4rem;
-	// border-top-right-radius: 0.5rem;
-	font-size: 1.4rem;
-	outline: none;
-	list-style: none;
-	.todo-list-item-name {
-		margin-left: 0.7rem;
-	}
-	.todo-list-buttons {
-		margin-right: 0.7rem;
-	}
-	.check-button,
-	.delete-button {
-		font-size: 1.2rem;
-		border: none;
-		background: none;
+	.todo-list-item {
+		display: flex;
+		align-items: center;
+		background: $blackish2;
 		color: $coralish;
-		cursor: pointer;
+		border-bottom: 1px dashed $coralish;
+		font-size: 1.4rem;
 		outline: none;
-		margin: 0.4rem 0.4rem;
+		list-style: none;
+		transition: all 0.3s ease-in-out;
+		.todo-list-item-name {
+			margin-left: 0.7rem;
+			flex: 1;
+		}
+		.todo-list-buttons {
+			margin-right: 0.7rem;
+		}
+		.check-button,
+		.delete-button {
+			font-size: 1.2rem;
+			border: none;
+			background: none;
+			color: $coralish;
+			cursor: pointer;
+			outline: none;
+			margin: 0.4rem 0.4rem;
+		}
+		.check-button {
+			&:hover {
+				color: green;
+			}
+		}
+		.delete-button {
+			&:hover {
+				color: red;
+			}
+		}
 	}
-	.check-button {
-		&:hover {
+	.fas fa-check-circle,
+	.fas fa-trash {
+		pointer-events: none;
+	}
+	.first-todo {
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
+	}
+	.last-todo {
+		border-bottom-left-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+	}
+	.todo-completed {
+		text-decoration: line-through;
+		opacity: 0.4;
+		.check-button {
 			color: green;
 		}
 	}
-	.delete-button {
-		&:hover {
+	.todo-fade-out {
+		transform: translateX(-40rem);
+		opacity: 0.2;
+		.delete-button {
 			color: red;
 		}
 	}

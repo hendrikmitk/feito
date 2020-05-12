@@ -2,27 +2,20 @@
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
 let todoCount = 0;
-// const checkButton = document.querySelectorAll(".check-button");
-// const deleteButton = document.querySelectorAll(".delete-button");
-// let checkButton = document.getElementsByClassName(".check-button");
-// let deleteButton = document.getElementsByClassName(".delete-button");
 
 // event listener
 todoButton.addEventListener("click", addTodo);
-// checkButton.addEventListener("click", checkTodo);
-// deleteButton.addEventListener("click", deleteTodo);
+todoList.addEventListener("click", checkDeleteTodo);
 
 // create todo html string with template literals
 const fetchedTodoString = (text) => `<div class="todo-list-item">
 <li class="todo-list-item-name">${text}</li>
-<div class="todo-list-buttons">
 <button class="check-button" type="button">
 <i class="fas fa-check-circle"></i>
 </button>
 <button class="delete-button" type="button">
 <i class="fas fa-trash"></i>
 </button>
-</div>
 </div>`;
 
 // get input, run fetchedTodoString funtion and append todo using throwaway <div>
@@ -44,12 +37,23 @@ function addTodo(event) {
 	}
 }
 
-// function checkTodo(event) {
-// 	event.preventDefault(); // prevent page reload
-// 	console.log("todo is ticked off");
-// }
-
-// function deleteTodo(event) {
-// 	event.preventDefault(); // prevent page reload
-// 	console.log("todo deleted");
-// }
+// check or delete todo depending on which element has been clicked
+function checkDeleteTodo(event) {
+	const element = event.target;
+	if (element.classList[1] === "fa-trash") {
+		console.log("trash button clicked");
+		const deletedTodo = element.parentElement.parentElement; // grab todo to be deleted
+		deletedTodo.classList.add("todo-fade-out"); // add fade out transition
+		deletedTodo.addEventListener("transitionend", function () {
+			deletedTodo.remove(); // remove todo on transition end
+		});
+	} else if (element.classList[1] === "fa-check-circle") {
+		console.log("check button clicked");
+		const checkedTodo = element.parentElement.parentElement; // grab todo to be checked
+		if (checkedTodo.parentElement.classList[1]) {
+			checkedTodo.classList.remove("todo-completed"); // if todo is already checked, only remove class
+		} else {
+			checkedTodo.classList.toggle("todo-completed"); // if todo is not checked toggle class
+		}
+	}
+}
