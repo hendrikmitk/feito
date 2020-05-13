@@ -143,8 +143,8 @@
   font-size: 1.4rem;
   outline: none;
   list-style: none;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 #todo-list .todo-list-item .todo-list-item-name {
@@ -188,12 +188,15 @@
 }
 
 #todo-list .todo-fade-out {
-  -webkit-transform: translateX(-40rem);
-          transform: translateX(-40rem);
+  -webkit-transform: translateY(18rem) rotateZ(22deg);
+          transform: translateY(18rem) rotateZ(22deg);
   opacity: 0.2;
+  border-bottom: none;
 }
 
-#todo-list .todo-fade-out .delete-button {
+#todo-list .todo-fade-out .check-button,
+#todo-list .todo-fade-out .delete-button,
+#todo-list .todo-fade-out .todo-list-item-name {
   color: red;
 }
 /*# sourceMappingURL=style.css.map */

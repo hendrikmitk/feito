@@ -88,7 +88,7 @@
 		font-size: 1.4rem;
 		outline: none;
 		list-style: none;
-		transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in;
 		.todo-list-item-name {
 			margin-left: 0.7rem;
 			flex: 1;
@@ -134,9 +134,12 @@
 		}
 	}
 	.todo-fade-out {
-		transform: translateX(-40rem);
+		transform: translateY(18rem) rotateZ(22deg);
 		opacity: 0.2;
-		.delete-button {
+		border-bottom: none;
+		.check-button,
+		.delete-button,
+		.todo-list-item-name {
 			color: red;
 		}
 	}
