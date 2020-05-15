@@ -2,7 +2,6 @@
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
 const filterOption = document.querySelector(".filter-todo");
-// const filterOption = document.getElementById("select");
 let todoCount = 0;
 
 // event listener
@@ -61,7 +60,7 @@ function checkDeleteTodo(event) {
 	}
 }
 
-// filter todos
+// filter todos for completed or not completed
 function filterTodos(event) {
 	const todos = todoList.childNodes;
 	todos.forEach(function (todo) {
@@ -86,8 +85,6 @@ function filterTodos(event) {
 		}
 	});
 }
-
-// window.onload = filterTodos;
 
 // count number of todos and log the DOM elements
 function logTodoContainer() {
