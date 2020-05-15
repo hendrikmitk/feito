@@ -1,11 +1,14 @@
 // select items
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
+const filterOption = document.querySelector(".filter-todo");
+// const filterOption = document.getElementById("select");
 let todoCount = 0;
 
 // event listener
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
+filterOption.addEventListener("click", filterTodos);
 
 // create todo html string with template literals
 const fetchedTodoString = (text) => `<div class="todo-list-item">
@@ -56,4 +59,42 @@ function checkDeleteTodo(event) {
 			checkedTodo.classList.toggle("todo-completed"); // if todo is not checked toggle class
 		}
 	}
+}
+
+// filter todos
+function filterTodos(event) {
+	const todos = todoList.childNodes;
+	todos.forEach(function (todo) {
+		switch (event.target.value) {
+			case "all":
+				todo.style.display = "flex";
+				break;
+			case "completed":
+				if (todo.classList.contains("todo-completed")) {
+					todo.style.display = "flex";
+				} else {
+					todo.style.display = "none";
+				}
+				break;
+			case "to-be-done":
+				if (!todo.classList.contains("todo-completed")) {
+					todo.style.display = "flex";
+				} else {
+					todo.style.display = "none";
+				}
+				break;
+		}
+	});
+}
+
+// window.onload = filterTodos;
+
+// count number of todos and log the DOM elements
+function logTodoContainer() {
+	const todos = todoList.childNodes;
+	let logCount = 0;
+	console.log("Now there are", todoList.childNodes.length, "todos");
+	todos.forEach(function (todo) {
+		console.log("childNode no", ++logCount, "of", todoList.childNodes.length, "is", todo);
+	});
 }

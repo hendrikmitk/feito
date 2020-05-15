@@ -20,9 +20,7 @@
 
         <div id="container">
 
-            <div id="header">
-                <h1 id="headline">feito.</h1>
-            </div>
+            <h1>feito.</h1>
 
             <div id="todo-container">
                 <div id="form">
@@ -34,36 +32,16 @@
                     </form>
                 </div>
 
+                <div id="select">
+                    <select name="todos" class="filter-todo">
+                        <option value="all">All</option>
+                        <option value="completed">Completed</option>
+                        <option value="to-be-done">To be done</option>
+                    </select>
+                </div>
+
                 <div id="todo-list-container">
-                    <ul id="todo-list">
-                        <div class="todo-list-item todo-completed">
-                            <li class="todo-list-item-name">register feito.me</li>
-                            <button class="check-button" type="button">
-                                <i class="fas fa-check-circle"></i>
-                            </button>
-                            <button class="delete-button" type="button">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                        <div class="todo-list-item">
-                            <li class="todo-list-item-name">set up github repository</li>
-                            <button class="check-button" type="button">
-                                <i class="fas fa-check-circle"></i>
-                            </button>
-                            <button class="delete-button" type="button">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                        <div class="todo-list-item">
-                            <li class="todo-list-item-name">deploy page on netlify</li>
-                            <button class="check-button" type="button">
-                                <i class="fas fa-check-circle"></i>
-                            </button>
-                            <button class="delete-button" type="button">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </ul>
+                    <ul id="todo-list"></ul>
                 </div>
             </div>
 
@@ -72,6 +50,34 @@
     </div>
 
     <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- <div class="todo-list-item todo-completed">
+        <li class="todo-list-item-name">register feito.me</li>
+        <button class="check-button" type="button">
+            <i class="fas fa-check-circle"></i>
+        </button>
+        <button class="delete-button" type="button">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+    <div class="todo-list-item">
+        <li class="todo-list-item-name">set up github repository</li>
+        <button class="check-button" type="button">
+            <i class="fas fa-check-circle"></i>
+        </button>
+        <button class="delete-button" type="button">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+    <div class="todo-list-item">
+        <li class="todo-list-item-name">deploy page on netlify</li>
+        <button class="check-button" type="button">
+            <i class="fas fa-check-circle"></i>
+        </button>
+        <button class="delete-button" type="button">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div> -->
 
 </body>
 
