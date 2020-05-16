@@ -8,6 +8,7 @@ let todoCount = 0;
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
 filterOption.addEventListener("click", filterTodos);
+document.addEventListener("DOMContentLoaded", getLocalTodos);
 
 // create todo html string with template literals
 const fetchedTodoString = (text) => `<div class="todo-list-item">
@@ -29,6 +30,7 @@ function addTodo(event) {
 		console.log("new todo", fetchedTodo, "added,", ++todoCount, "todos total"); // log number of todos
 		const div = document.createElement("div");
 		div.innerHTML = fetchedTodoString(fetchedTodo);
+		saveLocalTodos(fetchedTodo); // save todo to local storage
 		todoList.append(div.firstChild);
 		document.getElementById("todo-input").value = ""; // clear text input
 	} else {
@@ -43,14 +45,14 @@ function addTodo(event) {
 function checkDeleteTodo(event) {
 	const element = event.target;
 	if (element.classList[1] === "fa-trash") {
-		console.log("trash button clicked");
+		// console.log("trash button clicked");
 		const deletedTodo = element.parentElement.parentElement; // grab todo to be deleted
 		deletedTodo.classList.add("todo-fade-out"); // add fade out transition
 		deletedTodo.addEventListener("transitionend", function () {
 			deletedTodo.remove(); // remove todo on transition end
 		});
 	} else if (element.classList[1] === "fa-check-circle") {
-		console.log("check button clicked");
+		// console.log("check button clicked");
 		const checkedTodo = element.parentElement.parentElement; // grab todo to be checked
 		if (checkedTodo.parentElement.classList[1]) {
 			checkedTodo.classList.remove("todo-completed"); // if todo is already checked, only remove class
@@ -63,7 +65,10 @@ function checkDeleteTodo(event) {
 // filter todos for completed or not completed
 function filterTodos(event) {
 	const todos = todoList.childNodes;
+	let logCount = 0;
+	console.log("filter option:", event.target.value, ",", todoList.childNodes.length, "todos total");
 	todos.forEach(function (todo) {
+		// console.log("childNode no", ++logCount, "of", todoList.childNodes.length, "is", todo);
 		switch (event.target.value) {
 			case "all":
 				todo.style.display = "flex";
@@ -86,12 +91,31 @@ function filterTodos(event) {
 	});
 }
 
-// count number of todos and log the DOM elements
-function logTodoContainer() {
-	const todos = todoList.childNodes;
-	let logCount = 0;
-	console.log("Now there are", todoList.childNodes.length, "todos");
-	todos.forEach(function (todo) {
-		console.log("childNode no", ++logCount, "of", todoList.childNodes.length, "is", todo);
+// save todos to local storage
+function saveLocalTodos(todo) {
+	// check if there already is a localTodos item in local storage
+	let localTodos;
+	if (localStorage.getItem("localTodos") === null) {
+		localTodos = []; // no localTodos item in local storage, assign empty array to variable
+	} else {
+		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
+	}
+	localTodos.push(todo);
+	localStorage.setItem("localTodos", JSON.stringify(localTodos));
+}
+
+// get todos from local storage
+function getLocalTodos() {
+	// check if there already is a localTodos item in local storage
+	let localTodos;
+	if (localStorage.getItem("localTodos") === null) {
+		localTodos = []; // no localTodos item in local storage, assign empty array to variable
+	} else {
+		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
+	}
+	localTodos.forEach(function (storedTodo) {
+		const div = document.createElement("div");
+		div.innerHTML = fetchedTodoString(storedTodo);
+		todoList.append(div.firstChild);
 	});
 }
