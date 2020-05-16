@@ -2,7 +2,6 @@
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
 const filterOption = document.querySelector(".filter-todo");
-let todoCount = 0;
 
 // event listener
 todoButton.addEventListener("click", addTodo);
@@ -27,7 +26,7 @@ function addTodo(event) {
 	const fetchedTodo = document.getElementById("todo-input").value;
 	if (fetchedTodo) {
 		// input has value
-		console.log("new todo", fetchedTodo, "added,", ++todoCount, "todos total"); // log number of todos
+		console.log("new todo", fetchedTodo, "added,");
 		const div = document.createElement("div");
 		div.innerHTML = fetchedTodoString(fetchedTodo);
 		saveLocalTodos(fetchedTodo); // save todo to local storage
@@ -48,6 +47,7 @@ function checkDeleteTodo(event) {
 		// console.log("trash button clicked");
 		const deletedTodo = element.parentElement.parentElement; // grab todo to be deleted
 		deletedTodo.classList.add("todo-fade-out"); // add fade out transition
+		removeLocalTodos(deletedTodo);
 		deletedTodo.addEventListener("transitionend", function () {
 			deletedTodo.remove(); // remove todo on transition end
 		});
@@ -68,7 +68,6 @@ function filterTodos(event) {
 	let logCount = 0;
 	console.log("filter option:", event.target.value, ",", todoList.childNodes.length, "todos total");
 	todos.forEach(function (todo) {
-		// console.log("childNode no", ++logCount, "of", todoList.childNodes.length, "is", todo);
 		switch (event.target.value) {
 			case "all":
 				todo.style.display = "flex";
@@ -118,4 +117,22 @@ function getLocalTodos() {
 		div.innerHTML = fetchedTodoString(storedTodo);
 		todoList.append(div.firstChild);
 	});
+	let localTodoCount = localTodos.length;
+	console.log("found", localTodoCount, "todos in localStorage");
+	return localTodoCount;
+}
+
+// remove todo from local storage
+function removeLocalTodos(todo) {
+	// check if there already is a localTodos item in local storage
+	let localTodos;
+	if (localStorage.getItem("localTodos") === null) {
+		localTodos = []; // no localTodos item in local storage, assign empty array to variable
+	} else {
+		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
+	}
+	console.log(todo.children[0].innerText, "deleted and removed from local storage");
+	let localTodoIndex = todo.children[0].innerText; // get text element index
+	localTodos.splice(localTodos.indexOf(localTodoIndex), 1); // remove element from local storage array by its index
+	localStorage.setItem("localTodos", JSON.stringify(localTodos));
 }
