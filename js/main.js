@@ -102,26 +102,31 @@ function saveLocalTodos(todo) {
 	}
 	localTodos.push(todo);
 	localStorage.setItem("localTodos", JSON.stringify(localTodos));
-	console.log(todo.todoName, "added. total todos in localStorage:", localTodos.length, localTodos);
+	console.log(todo.todoName, "added, total todos in localStorage:", localTodos.length);
+	console.table(localTodos);
 }
 
 // get todos from local storage
 function getLocalTodos() {
 	// check if there are open or completed todo items in local storage
 	let localTodos;
-	// let localTodosCompleted;
 	if (localStorage.getItem("localTodos") === null) {
 		localTodos = []; // no localTodos item in local storage, assign empty array to variable
 	} else {
 		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
 	}
-	// append local todo items using throwaway <div>
+	console.log("total todos in localStorage:", localTodos.length);
 	localTodos.forEach(function (localTodo) {
+		// append local todo items using throwaway <div>
 		const div = document.createElement("div");
 		div.innerHTML = fetchedTodoString(localTodo.todoName);
+		// if-statement to check if todo is completed
+		if (localTodo.completed === true) {
+			div.firstChild.classList.add("todo-completed"); // add css class to html element
+		}
 		todoList.append(div.firstChild);
-	}),
-		console.log("total todos in localStorage:", localTodos.length, localTodos);
+	});
+	console.table(localTodos);
 }
 
 // remove todo from local storage
@@ -137,10 +142,11 @@ function removeLocalTodos(todo) {
 
 	// remove todo from todos array in local storage
 	let localTodoIndex = todo.children[0].innerText; // get text element index
-	// TODO check why always the last JSON object is deleted
+	// TODO check why always the last array item is deleted
 	localTodos.splice(localTodos.indexOf(localTodoIndex), 1); // remove element from local storage array by its index
 	localStorage.setItem("localTodos", JSON.stringify(localTodos));
-	console.log("total todos in localStorage:", localTodos.length, localTodos);
+	console.log("total todos in localStorage:", localTodos.length);
+	console.table(localTodos);
 }
 
 // update completed todo in local storage
@@ -153,15 +159,18 @@ function updateLocalToDo(todo) {
 		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
 	}
 	const updatedTodo = todo.children[0].innerText;
-	console.log("todo", updatedTodo, "needs to be changed to completed");
 
 	// update completed object property in local strorage
 	localTodos.forEach(function (localTodo) {
 		if (localTodo.todoName === updatedTodo && localTodo.completed === false) {
+			console.log("todo", updatedTodo, "completed");
 			localTodo.completed = true;
+			console.table(localTodos);
 			return localTodo;
 		} else if (localTodo.todoName === updatedTodo && localTodo.completed === true) {
+			console.log("todo", updatedTodo, "uncompleted");
 			localTodo.completed = false;
+			console.table(localTodos);
 			return localTodo;
 		}
 	});
