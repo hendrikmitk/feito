@@ -91,15 +91,20 @@ function filterTodos(event) {
 	});
 }
 
-// save todos to local storage
-function saveLocalTodos(todo) {
-	// check if there already is a localTodos item in local storage
+// check local storage for todos
+function checkLocalTodos() {
 	let localTodos;
 	if (localStorage.getItem("localTodos") === null) {
 		localTodos = []; // no localTodos item in local storage, assign empty array to variable
 	} else {
 		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
 	}
+	return localTodos;
+}
+
+// save todos to local storage
+function saveLocalTodos(todo) {
+	const localTodos = checkLocalTodos();
 	localTodos.push(todo);
 	localStorage.setItem("localTodos", JSON.stringify(localTodos));
 	console.log(todo.todoName, "added, total todos in localStorage:", localTodos.length);
@@ -108,13 +113,7 @@ function saveLocalTodos(todo) {
 
 // get todos from local storage
 function getLocalTodos() {
-	// check if there are open or completed todo items in local storage
-	let localTodos;
-	if (localStorage.getItem("localTodos") === null) {
-		localTodos = []; // no localTodos item in local storage, assign empty array to variable
-	} else {
-		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
-	}
+	const localTodos = checkLocalTodos();
 	console.log("total todos in localStorage:", localTodos.length);
 	localTodos.forEach(function (localTodo) {
 		const div = document.createElement("div");
@@ -129,15 +128,7 @@ function getLocalTodos() {
 
 // remove todo from local storage
 function removeLocalTodos(todo) {
-	// check if there are open or completed todo items in local storage
-	let localTodos;
-	if (localStorage.getItem("localTodos") === null) {
-		localTodos = []; // no localTodos item in local storage, assign empty array to variable
-	} else {
-		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
-	}
-	console.log(todo.children[0].innerText, "deleted and removed from local storage");
-
+	const localTodos = checkLocalTodos();
 	// remove JSON object item from array using splice and findIndex method
 	localTodos.splice(
 		localTodos.findIndex((v) => v.todoName === todo.children[0].innerText),
@@ -150,14 +141,7 @@ function removeLocalTodos(todo) {
 
 // update completed todo in local storage
 function updateLocalToDo(todo) {
-	// check if there already is a localTodos item in local storage
-	let localTodos;
-	if (localStorage.getItem("localTodos") === null) {
-		localTodos = []; // no localTodos item in local storage, assign empty array to variable
-	} else {
-		localTodos = JSON.parse(localStorage.getItem("localTodos")); // parse array from local storage to variable
-	}
-
+	const localTodos = checkLocalTodos();
 	// update completed object property in local strorage
 	const updatedTodo = todo.children[0].innerText;
 	localTodos.forEach(function (localTodo) {
