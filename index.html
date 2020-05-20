@@ -23,7 +23,7 @@
             <h1>feito.</h1>
 
             <div id="todo-container">
-                <div id="form">
+                <div id="form-wrapper">
                     <form id="form-input">
                         <input id="todo-input" type="text" placeholder="Feeding the hamster" autocomplete="off" autofocus>
                         <button id="todo-button" type="submit">
@@ -32,12 +32,14 @@
                     </form>
                 </div>
 
-                <div id="select">
-                    <select name="todos" class="filter-todo">
-                        <option value="all">All</option>
-                        <option value="completed">Completed</option>
-                        <option value="to-be-done">To be done</option>
-                    </select>
+                <div id="select-wrapper">
+                    <div id="select">
+                        <select name="todos" class="filter-todo">
+                            <option value="all">All</option>
+                            <option value="completed">Completed</option>
+                            <option value="to-be-done">To be done</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div id="todo-list-container">

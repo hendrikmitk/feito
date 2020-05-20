@@ -28,16 +28,15 @@
 }
 
 h1 {
-	font-size: 76pt;
+	font-size: 64pt;
 	@include gradientClip(right, $coralish, $coralish2);
 }
 
-#form-input {
+#form-wrapper,
+#form-input,
+#select-wrapper {
 	display: flex;
-	transition: all 0.4s ease-in-out;
-	// &:hover {
-	// 	scale: 1.03125;
-	// }
+	justify-content: center;
 }
 
 #todo-input,
@@ -54,6 +53,7 @@ h1 {
 	border-top-left-radius: 0.4rem;
 	border-bottom-left-radius: 0.4rem;
 	&::placeholder {
+		color: $coralish;
 		opacity: 0.6;
 	}
 }
@@ -105,6 +105,7 @@ select {
 }
 
 #todo-list {
+	width: 30rem;
 	display: flex;
 	flex-direction: column;
 	.todo-list-item {
@@ -112,14 +113,21 @@ select {
 		align-items: center;
 		background: $blackish2;
 		color: $coralish;
-		border-bottom: 1px dashed $coralish;
+		// border-style: none;
+		border-bottom: 1px solid $coralish;
 		font-size: 1.4rem;
 		outline: none;
 		list-style: none;
 		transition: all 0.3s ease-in;
+		white-space: nowrap;
 		.todo-list-item-name {
 			margin-left: 0.7rem;
+			width: 3rem;
+			overflow: scroll;
 			flex: 1;
+			&::-webkit-scrollbar {
+				display: none;
+			}
 		}
 		.check-button,
 		.delete-button {
@@ -146,14 +154,15 @@ select {
 	.fas fa-trash {
 		pointer-events: none;
 	}
-	// .first-todo {
-	// 	border-top-left-radius: 0.4rem;
-	// 	border-top-right-radius: 0.4rem;
-	// }
-	// .last-todo {
-	// 	border-bottom-left-radius: 0.4rem;
-	// 	border-bottom-right-radius: 0.4rem;
-	// }
+	.first-todo {
+		border-top-left-radius: 0.4rem;
+		border-top-right-radius: 0.4rem;
+	}
+	.last-todo {
+		border-bottom-left-radius: 0.4rem;
+		border-bottom-right-radius: 0.4rem;
+		border-style: none;
+	}
 	.todo-completed {
 		text-decoration: line-through;
 		opacity: 0.4;

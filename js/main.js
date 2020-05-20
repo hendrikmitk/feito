@@ -6,8 +6,9 @@ const filterOption = document.querySelector(".filter-todo");
 // event listener
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
-filterOption.addEventListener("click", filterTodos);
+filterOption.addEventListener("change", filterTodos);
 document.addEventListener("DOMContentLoaded", getLocalTodos);
+document.addEventListener("DOMContentLoaded", styleFirstLastTodo);
 
 // create todo html string with template literals
 const fetchedTodoString = (text) => `<div class="todo-list-item">
@@ -34,6 +35,7 @@ function addTodo(event) {
 		};
 		saveLocalTodos(newTodoObject); // save todo to local storage
 		todoList.append(div.firstChild);
+		styleFirstLastTodo();
 		document.getElementById("todo-input").value = ""; // clear text input
 	} else {
 		// input has no value
@@ -52,6 +54,7 @@ function checkDeleteTodo(event) {
 		removeLocalTodos(deletedTodo);
 		deletedTodo.addEventListener("transitionend", function () {
 			deletedTodo.remove(); // remove todo on transition end
+			styleFirstLastTodo();
 		});
 	} else if (element.classList[1] === "fa-check-circle") {
 		const checkedTodo = element.parentElement.parentElement; // grab todo to be checked
@@ -89,6 +92,22 @@ function filterTodos(event) {
 				break;
 		}
 	});
+}
+
+// style the first and the last todos HTML element
+function styleFirstLastTodo() {
+	const localTodos = checkLocalTodos();
+	const todoList = document.getElementById("todo-list"); // get todo list main element from DOM
+	for (let i = 0; i < localTodos.length; i++) {
+		// check for class first-todo and last-todo and remove them
+		if (todoList.children[i].classList.contains("first-todo")) {
+			todoList.children[i].classList.remove("first-todo");
+		} else if (todoList.children[i].classList.contains("last-todo")) {
+			todoList.children[i].classList.remove("last-todo");
+		}
+		document.getElementById("todo-list").firstChild.classList.add("first-todo"); // add css class to first todo html element
+		document.getElementById("todo-list").lastChild.classList.add("last-todo"); // add css class to last todo html element
+	}
 }
 
 // check local storage for todos
