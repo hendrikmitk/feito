@@ -105,8 +105,9 @@ function styleFirstLastTodo() {
 		} else if (todoList.children[i].classList.contains("last-todo")) {
 			todoList.children[i].classList.remove("last-todo");
 		}
-		document.getElementById("todo-list").firstChild.classList.add("first-todo"); // add css class to first todo html element
-		document.getElementById("todo-list").lastChild.classList.add("last-todo"); // add css class to last todo html element
+		todoList.firstChild.classList.add("first-todo"); // add css class to first todo html element
+		todoList.lastChild.classList.add("last-todo"); // add css class to last todo html element
+		// TODO handling for only one todo
 	}
 }
 

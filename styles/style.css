@@ -220,6 +220,11 @@ select {
   border-style: none;
 }
 
+#todo-list .one-todo {
+  border-radius: 0.4rem;
+  border-style: none;
+}
+
 #todo-list .todo-completed {
   text-decoration: line-through;
   opacity: 0.4;
