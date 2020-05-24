@@ -10,4 +10,4 @@ feito is one of my first beginner projects and heavily inspired by [this video](
 
 ## Roadmap
 
-At the time of writing, feito is just a simple todo list app. In fact, it's just a list app with rudimentary functionality. I'm working on making feito more comprehensive and first of all actually usable.
+At the time of writing, feito is just a simple to-do list app. In fact, it's just a list app with rudimentary functionality. I'm working on making feito more comprehensive and first of all actually usable.
