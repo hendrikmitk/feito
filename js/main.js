@@ -94,20 +94,25 @@ function filterTodos(event) {
 	});
 }
 
-// style the first and the last todos HTML element
+// style todo HTML elements
 function styleFirstLastTodo() {
 	const localTodos = checkLocalTodos();
 	const todoList = document.getElementById("todo-list"); // get todo list main element from DOM
 	for (let i = 0; i < localTodos.length; i++) {
-		// check for class first-todo and last-todo and remove them
-		if (todoList.children[i].classList.contains("first-todo")) {
-			todoList.children[i].classList.remove("first-todo");
-		} else if (todoList.children[i].classList.contains("last-todo")) {
-			todoList.children[i].classList.remove("last-todo");
+		// remove styling for all todo HTML elements
+		if (todoList.children[i].classList.contains("top-todo")) {
+			todoList.children[i].classList.remove("top-todo");
+		} else if (todoList.children[i].classList.contains("bottom-todo")) {
+			todoList.children[i].classList.remove("bottom-todo");
+		} else if (todoList.children[i].classList.contains("single-todo")) {
+			todoList.children[i].classList.remove("single-todo");
 		}
-		todoList.firstChild.classList.add("first-todo"); // add css class to first todo html element
-		todoList.lastChild.classList.add("last-todo"); // add css class to last todo html element
-		// TODO handling for only one todo
+		if (todoList.children.length === 1) {
+			todoList.firstChild.classList.add("single-todo"); // add styling for single todo html element
+		} else {
+			todoList.firstChild.classList.add("top-todo"); // add styling for top todo html element
+			todoList.lastChild.classList.add("bottom-todo"); // add styling for bottom todo html element
+		}
 	}
 }
 

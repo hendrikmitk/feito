@@ -75,22 +75,26 @@ h1 {
 
 #todo-input::-webkit-input-placeholder {
   color: #fa7342;
-  opacity: 0.6;
+  opacity: 0.4;
+  padding-left: 0.2rem;
 }
 
 #todo-input:-ms-input-placeholder {
   color: #fa7342;
-  opacity: 0.6;
+  opacity: 0.4;
+  padding-left: 0.2rem;
 }
 
 #todo-input::-ms-input-placeholder {
   color: #fa7342;
-  opacity: 0.6;
+  opacity: 0.4;
+  padding-left: 0.2rem;
 }
 
 #todo-input::placeholder {
   color: #fa7342;
-  opacity: 0.6;
+  opacity: 0.4;
+  padding-left: 0.2rem;
 }
 
 #todo-button {
@@ -163,12 +167,16 @@ select {
           align-items: center;
   background: rgba(41, 41, 41, 0.406);
   color: #fa7342;
-  border-bottom: 1px solid #fa7342;
+  border-bottom: 0.2rem solid #388b91db;
   font-size: 1.4rem;
   outline: none;
   list-style: none;
-  -webkit-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+  -webkit-transition-property: opacity, color, -webkit-transform;
+  transition-property: opacity, color, -webkit-transform;
+  transition-property: transform, opacity, color;
+  transition-property: transform, opacity, color, -webkit-transform;
   white-space: nowrap;
 }
 
@@ -209,18 +217,18 @@ select {
   pointer-events: none;
 }
 
-#todo-list .first-todo {
+#todo-list .top-todo {
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
 }
 
-#todo-list .last-todo {
+#todo-list .bottom-todo {
   border-bottom-left-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
   border-style: none;
 }
 
-#todo-list .one-todo {
+#todo-list .single-todo {
   border-radius: 0.4rem;
   border-style: none;
 }
