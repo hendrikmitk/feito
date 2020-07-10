@@ -1,5 +1,6 @@
 @import "./basics";
 @import "./colors";
+@import url("https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap");
 
 * {
 	margin: 0;
@@ -47,6 +48,8 @@ h1 {
 	font-size: 1.6rem;
 	outline: none;
 	padding: 0.6rem 0.8rem;
+	display: flex;
+	align-items: center;
 }
 
 #todo-input {
