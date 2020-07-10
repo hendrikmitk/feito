@@ -1,5 +1,3 @@
-import "../styles/style.scss";
-
 // select items
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
